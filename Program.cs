@@ -4,18 +4,18 @@
     {
         // Class variables to store name and age
         static string _name = "";
-        static sbyte _age;
+        static byte _age; // (byte - because we don't need range more than 0-120, so 0-255 is good option)
 
         // Entry point of the program
         static void Main()
         {
-            // Working through functions like a real junior guy ;)
-            _name = InputName();
-            _age = InputAge();
+            // Working through functions
+            _name = GetName();
+            _age = GetAge();
             ShowInfo();
         }
 
-        static string InputName()
+        static string GetName()
         {
             while (true)
             {
@@ -30,7 +30,7 @@
             }
         }
 
-        static sbyte InputAge()
+        static byte GetAge()
         {
             while (true)
             {
@@ -38,7 +38,7 @@
                 string? inputAge = Console.ReadLine();
 
                 // Accept ages between 0 and 120 and avoid letters
-                if (sbyte.TryParse(inputAge, out sbyte parsedAge) && parsedAge >= 0 && parsedAge <= 120)
+                if (byte.TryParse(inputAge, out byte parsedAge) && parsedAge >= 0 && parsedAge <= 120)
                     return parsedAge;
 
                 Console.WriteLine("Invalid age. Please enter a number between 0 and 120.");
